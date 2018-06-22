@@ -5,10 +5,12 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 
 import {HomePage} from '../pages/home/home';
 import {ListPage} from '../pages/list/list';
+import {SettingsProvider} from './../providers/settings/settings';
 
 @Component({
   templateUrl: 'app.html'
 })
+
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
@@ -20,6 +22,7 @@ export class MyApp {
   icons: string[];
   items: Array<{ title: string, note: string, icon: string }>;
 
+  selectedTheme: String;
 
   constructor(public platform: Platform, public statusBar: StatusBar,
               public splashScreen: SplashScreen) {
@@ -46,6 +49,9 @@ export class MyApp {
       });
     }
 
+
+
+
   }
 
   initializeApp() {
@@ -62,6 +68,7 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
     this.nav.setRoot(ListPage);
